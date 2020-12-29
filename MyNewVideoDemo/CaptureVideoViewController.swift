@@ -67,7 +67,7 @@
             NotificationCenter.default.addObserver(self, selector:#selector(appMovedToBackground), name: .NSExtensionHostDidEnterBackground, object: nil)
             
             formattedDuration = self.questionDuration.replacingOccurrences(of: " Sec", with: "", options: [.regularExpression, .caseInsensitive])
-            createNavBar()
+            //createNavBar()
             prepareView()
         }
         
@@ -316,7 +316,20 @@
 //            }
             
             //self.navigationController?.popViewController(animated: true)
-            self.dismiss(animated: true, completion: nil)
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            let vIRecordVideoVC = storyBoard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+            
+            let path:String = videoUrl.path
+            vIRecordVideoVC.urlString = path
+            
+            
+           self.navigationController?.pushViewController(vIRecordVideoVC, animated: true)
+//
+//            let vc = viewcontroller(nibName: "SecondaryViewController", bundle: nil)
+//                vc.text = "Next level blog photo booth, tousled authentic tote bag kogi"
+//
+//                navigationController?.pushViewController(vc, animated: true)
+           // self.dismiss(animated: true, completion: nil)
             print("post single video")
            
         }
