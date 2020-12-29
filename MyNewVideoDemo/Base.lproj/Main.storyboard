@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--App for Record and View Video-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController restorationIdentifier="ViewController" storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="MyNewVideoDemo" customModuleProvider="target" sceneMemberID="viewController">
@@ -25,7 +25,7 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gtt-Nr-8Oy">
                                 <rect key="frame" x="20" y="792" width="374" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Record Video"/>
                                 <connections>
                                     <action selector="pushAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ERY-9K-S87"/>
                                 </connections>
@@ -43,8 +43,9 @@
                             <constraint firstItem="gtt-Nr-8Oy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="khH-dW-W1m"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Obs-OG-Bye"/>
+                    <navigationItem key="navigationItem" title="App for Record and View Video" id="Obs-OG-Bye"/>
                     <connections>
+                        <outlet property="recorVideoButton" destination="gtt-Nr-8Oy" id="KoF-My-8ha"/>
                         <outlet property="videoPreviewLayer" destination="SLV-9d-vbj" id="Qlm-Kc-7lU"/>
                     </connections>
                 </viewController>

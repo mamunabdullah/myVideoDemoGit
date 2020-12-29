@@ -17,11 +17,14 @@ class ViewController: UIViewController {
     var attemptLabel = PaddingLabel(withInsets: 4,4,16,16)
     var recordAgainLabel = PaddingLabel(withInsets: 4,4,4,4)
     
+    @IBOutlet weak var recorVideoButton: UIButton!
+    
     var urlString = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if(urlString != ""){
+            self.recorVideoButton.setTitle("Record Again", for: .normal)
             playVideoFromLocal(downloadedFilePath: urlString)
             
         }else{
@@ -41,14 +44,9 @@ class ViewController: UIViewController {
     
     
     func  playVideoFromLocal(downloadedFilePath: String){
-        //let urlString = downloadedFilePath
-        //let url =  URL(string: urlString)
-        
         let urlString = "file://" + downloadedFilePath
         let url =  URL(string: urlString)
         print("playVideoFromLocal URL :\(String(describing: url))")
-        
-       // print("playVideoFromLocal URL :\(String(describing: url))")
         self.player = AVPlayer(url: url!)
         self.avpController = AVPlayerViewController()
         self.avpController.player = self.player

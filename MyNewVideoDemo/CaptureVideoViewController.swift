@@ -17,7 +17,7 @@
         var jobId = ""
         var applyId = ""
         var totalQuestion = ""
-        var questionSerialNo = "2"
+        var questionSerialNo = ""
         var questionId = "3495"
         var questionText = "What is the difference between UI design and UX design?"
         var questionDuration = "40"
@@ -67,7 +67,6 @@
             NotificationCenter.default.addObserver(self, selector:#selector(appMovedToBackground), name: .NSExtensionHostDidEnterBackground, object: nil)
             
             formattedDuration = self.questionDuration.replacingOccurrences(of: " Sec", with: "", options: [.regularExpression, .caseInsensitive])
-            //createNavBar()
             prepareView()
         }
         
@@ -81,7 +80,7 @@
             stopVideoRecording()
             wentToNextVC = true
             print("Back to details")
-           // CommonRoutes.backtoVideoQuestionDetails(source: self, jobId: jobId, applyId: applyId,index: index)
+           
         }
         
         override func viewWillDisappear(_ animated: Bool) {
@@ -106,7 +105,6 @@
             stopVideoRecording()
             wentToNextVC = true
             print("Back to details")
-           // CommonRoutes.backtoVideoQuestionDetails(source: self, jobId: jobId, applyId: applyId,index: index)
         }
         
         
@@ -128,7 +126,7 @@
             
             previewView.session = session
             previewView.session?.session.sessionPreset = AVCaptureSession.Preset.low
-    //        session.setWidth(426, height: 240, frameRate: 30)
+    
 
             if AVCaptureDevice.default(.builtInWideAngleCamera, for: AVMediaType.video, position: .front) != nil {
                 print("Front camera found")
@@ -296,62 +294,15 @@
         }
         
         func postSingleVideoToServer(userId:String, decodeId:String, jobId:String, applyId:String, quesId:String, duration:String, questionSerialNo:String, videoUrl: URL) {
-//            MyBDJobsEndPointsCaller.singleVideoUpload(userId:userId, decodeId:decodeId, jobId:jobId, applyId:applyId, quesId:quesId, duration:duration, questionSerialNo:questionSerialNo, videoUrl: videoUrl) { result in
-//                switch result {
-//                case .success:
-//                    guard let singleVideoUpload = result.value else {
-//                        print("System needs some time to work. Please try again later.")
-//                        return
-//                    }
-//                    if singleVideoUpload.statuscode == "4" {
-//                        print(singleVideoUpload.message)
-//                        self.recordUploadingLabel.isHidden = true
-//                        CommonRoutes.backtoVideoQuestionDetails(source: self, jobId: jobId, applyId: applyId,index: self.index)
-//                    }
-//                    return
-//                case .failure:
-//                    print("else false")
-//                    return
-//                }
-//            }
-            
-            //self.navigationController?.popViewController(animated: true)
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
             let vIRecordVideoVC = storyBoard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-            
             let path:String = videoUrl.path
             vIRecordVideoVC.urlString = path
-            
-            
            self.navigationController?.pushViewController(vIRecordVideoVC, animated: true)
-//
-//            let vc = viewcontroller(nibName: "SecondaryViewController", bundle: nil)
-//                vc.text = "Next level blog photo booth, tousled authentic tote bag kogi"
-//
-//                navigationController?.pushViewController(vc, animated: true)
-           // self.dismiss(animated: true, completion: nil)
-            print("post single video")
            
         }
         
         func postVideoInterviewStartProcessToServer(userId:String, decodeId:String, applyId:String, deviceName:String) {
-//            MyBDJobsEndPointsCaller.videoInterviewStart(userId:userId, decodeId:decodeId, applyId:applyId, deviceName:deviceName) { result in
-//                switch result {
-//                case .success:
-//                    guard let videoInterviewStart = result.value else {
-//                        print("System needs some time to work. Please try again later.")
-//                        return
-//                    }
-//                    if (videoInterviewStart.statuscode == "3" || videoInterviewStart.statuscode == "4"){
-//                        print(videoInterviewStart.message ?? "")
-//                        self.processStarted()
-//                    }
-//                    return
-//                case .failure:
-//                    print("else false")
-//                    return
-//                }
-//            }
             self.processStarted()
             print("post videos")
         }
